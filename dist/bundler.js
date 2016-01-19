@@ -70,7 +70,7 @@ function createFetchHook(cfg) {
   return function (load, fetch) {
     var address = (0, _systemjsBuilderLibUtils.fromFileURL)(load.address);
     var ext = _path2['default'].extname(address);
-
+console.log('Processing a file ' +address );
     if (ext === '.html' && cfg.options.minify) {
       var content = _fs2['default'].readFileSync(address, 'utf8');
       var opts = utils.getHTMLMinOpts(cfg.options.htmlminopts);
@@ -79,6 +79,7 @@ function createFetchHook(cfg) {
     }
 
     if (ext === '.css' && cfg.options.minify) {
+      console.log('Detected a beautiful css file');
       var content = _fs2['default'].readFileSync(address, 'utf8');
       var opts = utils.getCSSMinOpts(cfg.options.cssminopts);
 
@@ -136,7 +137,7 @@ function _bundle(buildExpression, cfg) {
   builder.config(cfg.builderCfg);
 
   return builder.bundle(buildExpression, cfg.options).then(function (output) {
-
+console.log('Will bundle to ' + outfile );
     var outfile = utils.getOutFileName(output.source, cfg.bundleName + '.js', cfg.options.rev);
     writeOutput(output, outfile, cfg.baseURL, cfg.force);
 
