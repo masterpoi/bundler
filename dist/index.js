@@ -38,7 +38,7 @@ var _unbundle = require('./unbundle');
 _defaults(exports, _interopExportWildcard(_unbundle, _defaults));
 
 function bundle(_config) {
-
+console.log('MY CUSTOMIZED Bundle Function');
   var tasks = [];
   var config = (0, _utils.getCommonConfig)(_config);
 
